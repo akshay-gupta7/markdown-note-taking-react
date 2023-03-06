@@ -3,11 +3,31 @@ import CreatableReactSelect from "react-select/creatable"
 import { Link } from "react-router-dom"
 import { useRef } from "react"
 
-export function NoteForm(){
+type Note = {
+    id: string
+} & NoteData
+
+type NoteData = {
+    title: string
+    markdown: string
+    tags: Tag[]
+}
+
+type Tag ={
+    id: string
+    label: string
+}
+
+export function NoteForm({ onSubmit }){
     const titleRef = useRef<HTMLInputElement>(null)
     const markdownRef = useRef<HTMLInputElement>(null)
+
+    function handleSubmit(e: FormEvent){
+        e.preventDefault()
+    }
+
     return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
         <Stack gap={4}>
             <Row>
                 <Col>
