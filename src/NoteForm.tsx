@@ -43,8 +43,8 @@ export function NoteForm({ onSubmit }: NoteFormProps){
                                 return { label: tag.label, value: tag.id }
                             })}
                             onChange={ tags => {
-                                setSelectedTags(tags.map(map => {
-                                    return { label: tags.label, id: tags.value }
+                                setSelectedTags(tags.map(tag => {
+                                    return { label: tag.label, id: tag.value }
                                 }))
                             }
 
