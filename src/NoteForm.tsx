@@ -11,7 +11,7 @@ type NoteFormProps = {
 
 export function NoteForm({ onSubmit }: NoteFormProps){
     const titleRef = useRef<HTMLInputElement>(null)
-    const markdownRef = useRef<HTMLInputElement>(null)
+    const markdownRef = useRef<HTMLTextAreaElement>(null)
 
     function handleSubmit(e: FormEvent){
         e.preventDefault()
