@@ -11,7 +11,7 @@ export type Note = {
 
 export type RawNote = {
   id: string
-}
+} & RawNoteDate
 
 export type RawNoteDate = {
   title: string
