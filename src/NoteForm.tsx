@@ -1,3 +1,11 @@
+import { Col, Row, Form, Stack } from "react-bootstrap"
+
 export function NoteForm(){
-    return <h1>Note Form</h1>
+    return (
+    <Form>
+        <Stack gap={4}>
+
+        </Stack>
+    </Form>
+    )
 }
