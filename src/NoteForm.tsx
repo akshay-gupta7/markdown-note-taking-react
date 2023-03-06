@@ -1,8 +1,11 @@
 import { Col, Row, Form, Stack, Button } from "react-bootstrap"
 import CreatableReactSelect from "react-select/creatable"
 import { Link } from "react-router-dom"
+import { useRef } from "react"
 
 export function NoteForm(){
+    const titleRef = useRef<HTMLInputElement>(null)
+    const markdownRef = useRef<HTMLInputElement>(null)
     return (
     <Form>
         <Stack gap={4}>
@@ -10,7 +13,7 @@ export function NoteForm(){
                 <Col>
                     <Form.Group controlId="title">
                         <Form.Label>Title</Form.Label>
-                        <Form.Control required />
+                        <Form.Control ref={titleRef} required />
                     </Form.Group>
                 </Col>
                 <Col>
@@ -22,7 +25,7 @@ export function NoteForm(){
             </Row>
             <Form.Group controlId="markdown">
                 <Form.Label>Body</Form.Label>
-                <Form.Control required as="textarea" rows={15} />
+                <Form.Control required as="textarea" ref={markdownRef} rows={15} />
             </Form.Group>
             <Stack direction="horizontal" gap={2} className="justify-content-end">
                 <Button type="submit" variant="primary" >
