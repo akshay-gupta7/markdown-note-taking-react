@@ -1,9 +1,9 @@
-import { Row, Col, Stack, Button, Form } from "react-bootstrap"
+import { Row, Col, Stack, Button, Form, Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import ReactSelect from "react-select"
 import { useState, useMemo } from "react"
 import { Tag } from "./App"
-import { Note } from "./App"
+import styles from "./NoteList.module.css"
 
 type SimplifiedNote ={
     tags: Tag[],
@@ -82,5 +82,9 @@ export function NoteList({ availableTags, notes }: NoteListProps){
 }
 
 function NoteCard({ id, title, tags}: SimplifiedNote){
-    return <h1>Hello</h1>
+    return <Card as={Link} to={`/${id}`} className={`h-100 text-reset text-decoration-none ${styles.card}`}>
+        <Card.Body>
+
+        </Card.Body>
+    </Card>
 }
