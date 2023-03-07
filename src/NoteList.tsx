@@ -1,3 +1,11 @@
+import { Row, Col } from "react-bootstrap"
+
 export function NoteList(){
-    return <h1>List</h1>
+    return (<>
+    <Row>
+        <Col><h1>Notes</h1></Col>
+    </Row>
+
+    </>
+    )
 }
