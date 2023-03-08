@@ -1,4 +1,4 @@
-import { Row, Col, Stack, Button, Form, Card, Badge} from "react-bootstrap"
+import { Row, Col, Stack, Button, Form, Card, Badge, Modal} from "react-bootstrap"
 import { Link } from "react-router-dom"
 import ReactSelect from "react-select"
 import { useState, useMemo } from "react"
@@ -14,6 +14,12 @@ type SimplifiedNote ={
 type NoteListProps ={
     availableTags: Tag[],
     notes: SimplifiedNote[]
+}
+
+type EditTagsModalProp= {
+    show: boolean
+    availableTags: Tag[]
+    handleClose: () => void
 }
 
 export function NoteList({ availableTags, notes }: NoteListProps){
@@ -76,7 +82,7 @@ export function NoteList({ availableTags, notes }: NoteListProps){
             </Col>
         ))}
     </Row>
-
+    <EditTagsModal show={} handleClose={} availableTags={availableTags}/>
     </>
     )
 }
@@ -98,4 +104,27 @@ function NoteCard({ id, title, tags}: SimplifiedNote){
             </Stack>
         </Card.Body>
     </Card>
+}
+
+function EditTagsModal({availableTags, handleClose, show}: EditTagsModalProp){
+    return <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+            <Modal.Title>Edit Tags</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <Form>
+                <Stack gap={2}>
+                    {availableTags.map(tag => (
+                        <Row key ={tag.id}>
+                            <Col>
+                            <Form.Control type="text" value={tag.label} /></Col>
+                            <Col xs="auto">
+                                <Button variant="outline-danger">&times;</Button>
+                            </Col>
+                        </Row>
+                        ))}
+                </Stack>
+            </Form>
+        </Modal.Body>
+    </Modal>
 }
