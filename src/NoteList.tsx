@@ -89,7 +89,7 @@ export function NoteList({ availableTags, notes, onDeleteTag, onUpdateTag }: Not
         ))}
     </Row>
     <EditTagsModal onDeleteTag={onDeleteTag} onUpdateTag={onUpdateTag} 
-    show={editTagsModalIsOpen} handleClose={() => {() => setEditTagsModalIsOpen(false)}} availableTags={availableTags}/>
+    show={editTagsModalIsOpen} handleClose={() => setEditTagsModalIsOpen(false)} availableTags={availableTags}/>
     </>
     )
 }
@@ -124,9 +124,12 @@ function EditTagsModal({onDeleteTag, onUpdateTag, availableTags, handleClose, sh
                     {availableTags.map(tag => (
                         <Row key ={tag.id}>
                             <Col>
-                            <Form.Control type="text" value={tag.label} /></Col>
+                            <Form.Control  
+                            type="text" value={tag.label}
+                            onChange={e => onUpdateTag(tag.id, e.target.value)} /></Col>
                             <Col xs="auto">
-                                <Button variant="outline-danger">&times;</Button>
+                                <Button onClick = {() => onDeleteTag(tag.id) } 
+                                variant="outline-danger">&times;</Button>
                             </Col>
                         </Row>
                         ))}
